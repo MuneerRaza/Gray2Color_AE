@@ -1,7 +1,7 @@
 import json
 import numpy as np
 import tensorflow as tf
-from keras.models import load_model
+from model import autoencoder_with_transformer
 from keras.preprocessing.image import img_to_array, load_img
 
 
@@ -18,22 +18,17 @@ def preprocess_image(image_path, target_size=(128, 128)):
     img = img.reshape(-1, 128, 128, 1)  # Reshape for model input
     return img
 
-
 # Main inference function
 def infer(model_path, image_path):
-    # Load the trained model
-    model = load_model(model_path)
-
+    model = autoencoder_with_transformer(input_shape=(config["image_size"][0], config["image_size"][1], 1), num_classes=3)
+    model.load_weights(model_path)
+    
     # Preprocess the input image
     input_image = preprocess_image(image_path)
 
     # Predict the colorized image
     predicted_image = model.predict(input_image)
 
-    psnr = tf.image.psnr(predicted_image, input_image, max_val=1.0).numpy()
-    ssim = tf.image.ssim(predicted_image, input_image, max_val=1.0).numpy()
-    print(f"PSNR: {psnr}")
-    print(f"SSIM: {ssim}")
 
     return predicted_image
 
