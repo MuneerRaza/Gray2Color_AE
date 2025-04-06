@@ -30,6 +30,11 @@ def infer(model_path, image_path):
     # Predict the colorized image
     predicted_image = model.predict(input_image)
 
+    psnr = tf.image.psnr(predicted_image, input_image, max_val=1.0).numpy()
+    ssim = tf.image.ssim(predicted_image, input_image, max_val=1.0).numpy()
+    print(f"PSNR: {psnr}")
+    print(f"SSIM: {ssim}")
+
     return predicted_image
 
 if __name__ == "__main__":
