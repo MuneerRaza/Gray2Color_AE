@@ -4,6 +4,7 @@ from keras.optimizers import Adam
 from dataloader import load_images
 from model import autoencoder_with_transformer
 from sklearn.model_selection import train_test_split
+from tqdm import tqdm
 
 # Load configuration from config.json
 with open('../config.json') as config_file:
@@ -36,7 +37,9 @@ model.save(config['model_path'])
 print("Evaluating the model...")
 psnr = []
 ssim = []
-for i in range(len(x_test)):
+# Evaluate model with progress bar
+# for i in tqdm(range(len(x_test)), desc="Evaluating images"):
+for i in tqdm(range(10), desc="Evaluating images"):
     pred = model.predict(x_test[i].reshape(1, 128, 128, 1), verbose=0)
     psnr.append(tf.image.psnr(y_test[i], pred[0], max_val=1.0).numpy())
     ssim.append(tf.image.ssim(y_test[i], pred[0], max_val=1.0).numpy())
