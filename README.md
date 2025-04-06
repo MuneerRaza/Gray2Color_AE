@@ -67,5 +67,10 @@ The Autoencoder model has shown promising results in converting grayscale images
 
 These values indicate good image quality and high similarity between the colorized and original color images.
 
+## Results
+![image](https://github.com/user-attachments/assets/07cbf16d-9411-48df-b42f-bf8d5d402472)
+
+![image](https://github.com/user-attachments/assets/3b2ccb5f-a467-45b6-9078-6acfb570540c)
+
 ## Acknowledgments
 This project is inspired by recent advancements in deep learning for image processing, especially in the area of image colorization. It aims to contribute to the field by providing a simple yet effective implementation of an Autoencoder-based architecture augmented with Transformers for improved colorization quality.
