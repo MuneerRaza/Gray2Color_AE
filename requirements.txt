@@ -1,0 +1,6 @@
+numpy
+scikit-learn
+tensorflow
+keras
+scikit-image
+tqdm
