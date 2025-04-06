@@ -37,7 +37,7 @@ print("Evaluating the model...")
 psnr = []
 ssim = []
 for i in range(len(x_test)):
-    pred = model.predict(x_test[i].reshape(1, 128, 128, 1))
+    pred = model.predict(x_test[i].reshape(1, 128, 128, 1), verbose=0)
     psnr.append(tf.image.psnr(y_test[i], pred[0], max_val=1.0).numpy())
     ssim.append(tf.image.ssim(y_test[i], pred[0], max_val=1.0).numpy())
 print(f"Average PSNR: {sum(psnr) / len(psnr)}")
