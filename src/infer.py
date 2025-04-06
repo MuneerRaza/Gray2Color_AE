@@ -7,7 +7,7 @@ from keras.preprocessing.image import img_to_array, load_img
 
 # Load configuration from config.json
 def load_config():
-    with open('config.json') as config_file:
+    with open('../config.json') as config_file:
         config = json.load(config_file)
     return config
 

@@ -38,8 +38,7 @@ print("Evaluating the model...")
 psnr = []
 ssim = []
 # Evaluate model with progress bar
-# for i in tqdm(range(len(x_test)), desc="Evaluating images"):
-for i in tqdm(range(10), desc="Evaluating images"):
+for i in tqdm(range(len(x_test)), desc="Evaluating images"):
     pred = model.predict(x_test[i].reshape(1, 128, 128, 1), verbose=0)
     psnr.append(tf.image.psnr(y_test[i], pred[0], max_val=1.0).numpy())
     ssim.append(tf.image.ssim(y_test[i], pred[0], max_val=1.0).numpy())
